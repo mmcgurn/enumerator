@@ -17,10 +17,10 @@ target_sources(enumeratorTests
         mocks.hpp
         )
 
-
 # Add each subDir
 add_subdirectory(enumerations)
 add_subdirectory(reporters)
+add_subdirectory(generators)
 
 gtest_discover_tests(enumeratorTests
         # set a working directory so your project root so that you can find test data via paths relative to the project root

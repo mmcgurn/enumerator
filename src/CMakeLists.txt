@@ -8,4 +8,5 @@ target_sources(enumeratorLibrary
 
 add_subdirectory(enumerations)
 add_subdirectory(reporters)
+add_subdirectory(generators)
 target_include_directories(enumeratorLibrary PUBLIC ${CMAKE_CURRENT_LIST_DIR})
