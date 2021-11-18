@@ -26,11 +26,10 @@ TEST_P(FileTemplateGeneratorTestFixture, ShouldReport) {
     std::filesystem::create_directories(tempFileDirectory);
 
     // Write the template file
-    auto templateFilePath = tempFileDirectory/"template.txt";
+    auto templateFilePath = tempFileDirectory / "template.txt";
     std::ofstream out(templateFilePath);
     out << GetParam().templateString;
     out.close();
-
 
     {  // act
         generators::FileTemplateGenerator generator(templateFilePath);
@@ -51,11 +50,11 @@ TEST_P(FileTemplateGeneratorTestFixture, ShouldReport) {
 
 INSTANTIATE_TEST_SUITE_P(SutherlandTests, FileTemplateGeneratorTestFixture,
                          testing::Values((FileTemplateGeneratorTestParameters){.templateString = "Start {{a}} and add {{b}} with {{a}}\n\t {{c}} + {{a}} + {{b}}\n",
-                                                                           .cases = {std::make_pair("case1", std::map<std::string, std::string>{{"a", "1"}, {"b", "2"}})},
-                                                                           .expectedFiles = {{"case1.txt", "Start 1 and add 2 with 1\n\t {{c}} + 1 + 2\n"}}},
+                                                                               .cases = {std::make_pair("case1", std::map<std::string, std::string>{{"a", "1"}, {"b", "2"}})},
+                                                                               .expectedFiles = {{"case1.txt", "Start 1 and add 2 with 1\n\t {{c}} + 1 + 2\n"}}},
                                          (FileTemplateGeneratorTestParameters){.templateString = "Start {{a}} and add {{b}} with {{a}}{{cc}}{hi}\n\t {{cc}} + \"{{a}}\" + {{b}}\n",
-                                                                           .cases = {std::make_pair("case1", std::map<std::string, std::string>{{"a", "1"}, {"b", "2"}}),
-                                                                                     std::make_pair("case2", std::map<std::string, std::string>{{"a", "alpha"}, {"b", "beta"}, {"cc", "gamma"}})},
-                                                                           .expectedFiles = {{"case1.txt", "Start 1 and add 2 with 1{{cc}}{hi}\n\t {{cc}} + \"1\" + 2\n"},
-                                                                                             {"case1.txt", "Start alpha and add beta with alphagamma{hi}\n\t gamma + \"alpha\" + beta\n"}}}));
+                                                                               .cases = {std::make_pair("case1", std::map<std::string, std::string>{{"a", "1"}, {"b", "2"}}),
+                                                                                         std::make_pair("case2", std::map<std::string, std::string>{{"a", "alpha"}, {"b", "beta"}, {"cc", "gamma"}})},
+                                                                               .expectedFiles = {{"case1.txt", "Start 1 and add 2 with 1{{cc}}{hi}\n\t {{cc}} + \"1\" + 2\n"},
+                                                                                                 {"case1.txt", "Start alpha and add beta with alphagamma{hi}\n\t gamma + \"alpha\" + beta\n"}}}));
 }  // namespace ablateTesting

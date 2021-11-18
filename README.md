@@ -14,6 +14,7 @@ In this example a string is provided in the template file directly.  Arguments i
 ### templateStringExample.yaml
 ```yaml
 ---
+---
 name: exampleFileGen.
 enumerations:
   - !enumerator::enumerations::List
@@ -22,11 +23,16 @@ enumerations:
   - !enumerator::enumerations::List
     name: density
     values: [ 1.1, 1.2 ]
+  - !enumerator::enumerations::Range
+    name: vel
+    start: .25
+    end: .5
+    points: 3
 generator:
   !enumerator::generators::TemplateGenerator
   template: |
     #!/bin/bash
-    echo "Hello World {{mu}} and {{density}}
+    echo "Hello World {{mu}} and {{density}} with vel {{vel}}
   extension: .sh
   outputDirectory: outputs
 reporters:

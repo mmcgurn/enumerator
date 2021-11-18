@@ -65,11 +65,12 @@ int main(int argc, char** args) {
         if (std::filesystem::exists(fileName)) {
             return std::filesystem::path(fileName);
         }
-        // try a local path
-        auto localPath = inputFilePath.parent_path() / fileName;
-        if (std::filesystem::exists(localPath)) {
-            return localPath;
+
+        if(std::filesystem::path(fileName).is_relative()){
+            // try a local path
+            return inputFilePath.parent_path() / fileName;
         }
+
         return std::filesystem::path(fileName);
     });
 

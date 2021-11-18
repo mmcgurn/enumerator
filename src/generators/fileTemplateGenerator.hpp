@@ -14,5 +14,5 @@ class FileTemplateGenerator : public TemplateGenerator {
     explicit FileTemplateGenerator(std::filesystem::path templatePath);
 };
 
-}
+}  // namespace enumerator::generators
 #endif  // ENUMERATOR_FILETEMPLATEGENERATOR_HPP

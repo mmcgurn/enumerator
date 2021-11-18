@@ -160,13 +160,14 @@ INSTANTIATE_TEST_SUITE_P(
 
                                                        return mockGenerator;
                                                    },
-                                               .setupMockReporters = []() {
-                                                   auto mockReporter = std::make_shared<enumeratorTests::MockReporter>();
+                                               .setupMockReporters =
+                                                   []() {
+                                                       auto mockReporter = std::make_shared<enumeratorTests::MockReporter>();
 
-                                                   EXPECT_CALL(*mockReporter, Report("t5.0", std::map<std::string, std::string>{{"a", "x"}})).Times(::testing::Exactly(1));
-                                                   EXPECT_CALL(*mockReporter, Report("t5.1", std::map<std::string, std::string>{{"a", "y"}})).Times(::testing::Exactly(1));
-                                                   return std::vector<std::shared_ptr<Reporter>>{mockReporter};
-                                               }},
+                                                       EXPECT_CALL(*mockReporter, Report("t5.0", std::map<std::string, std::string>{{"a", "x"}})).Times(::testing::Exactly(1));
+                                                       EXPECT_CALL(*mockReporter, Report("t5.1", std::map<std::string, std::string>{{"a", "y"}})).Times(::testing::Exactly(1));
+                                                       return std::vector<std::shared_ptr<Reporter>>{mockReporter};
+                                                   }},
                     (EnumeratorTestParameters){.name = "t6.",
                                                .enumerations = {std::make_shared<List>("a", "x", "y"), std::make_shared<List>("b"), std::make_shared<List>("c", 1, 2)},
                                                .setupMockGenerator =

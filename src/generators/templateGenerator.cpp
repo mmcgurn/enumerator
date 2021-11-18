@@ -10,8 +10,8 @@ enumerator::generators::TemplateGenerator::TemplateGenerator(std::string templat
 std::string enumerator::generators::TemplateGenerator::GetVariableReplacementString(const std::string varName) {
     auto rawName = "{{" + varName + "}}";
 
-    std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\s])" };
-    return std::regex_replace( rawName, specialChars, R"(\$&)" );
+    std::regex specialChars{R"([-[\]{}()*+?.,\^$|#\s])"};
+    return std::regex_replace(rawName, specialChars, R"(\$&)");
 }
 
 void enumerator::generators::TemplateGenerator::Generate(const std::string& caseName, const std::map<std::string, std::string>& values) {
@@ -31,7 +31,5 @@ void enumerator::generators::TemplateGenerator::Generate(const std::string& case
 }
 
 #include "registrar.hpp"
-REGISTER(enumerator::Generator, enumerator::generators::TemplateGenerator, "Generates template from a specified string",
-        ARG(std::string, "template", "the template string"),
-         OPT(std::string, "extension", "optional file extension"),
-         ARG(std::string, "outputDirectory", "the path to the output directory"));
+REGISTER(enumerator::Generator, enumerator::generators::TemplateGenerator, "Generates template from a specified string", ARG(std::string, "template", "the template string"),
+         OPT(std::string, "extension", "optional file extension"), ARG(std::filesystem::path, "outputDirectory", "the path to the output directory"));

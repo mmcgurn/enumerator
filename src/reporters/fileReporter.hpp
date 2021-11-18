@@ -1,13 +1,13 @@
 #ifndef ENUMERATOR_FILEREPORTER_HPP
 #define ENUMERATOR_FILEREPORTER_HPP
 
-#include "streamReporter.hpp"
-#include <iostream>
-#include <fstream>
 #include <filesystem>
+#include <fstream>
+#include <iostream>
+#include "streamReporter.hpp"
 namespace enumerator::reporters {
 
-class FileReporter: public StreamReporter {
+class FileReporter : public StreamReporter {
    private:
     std::fstream outputFileStream;
 
@@ -16,5 +16,5 @@ class FileReporter: public StreamReporter {
     ~FileReporter() override;
 };
 
-}
+}  // namespace enumerator::reporters
 #endif  // ENUMERATOR_FILEREPORTER_HPP

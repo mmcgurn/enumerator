@@ -1,9 +1,9 @@
 #include "streamReporter.hpp"
-enumerator::reporters::StreamReporter::StreamReporter(std::ostream& outputStream): outputStream(outputStream) {}
+enumerator::reporters::StreamReporter::StreamReporter(std::ostream& outputStream) : outputStream(outputStream) {}
 
 void enumerator::reporters::StreamReporter::Report(const std::string& caseName, const std::map<std::string, std::string>& values) {
     outputStream << caseName << std::endl;
-    for(const auto& value: values){
+    for (const auto& value : values) {
         outputStream << '\t' << value.first << ": " << value.second << std::endl;
     }
 }
