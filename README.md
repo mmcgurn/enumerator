@@ -1,7 +1,6 @@
 # enumerator
-a library/executable that create a file from a template for every enumeration 
+Is a library/executable that create a file from a template for every variation. This library/executable allows generating an enumerations of inputs.
 
-This library/executable allows generating an enumerations of inputs.
 The minimum required options is a path to an input file:
 
 ```bash
@@ -13,7 +12,6 @@ In this example a string is provided in the template file directly.  Arguments i
 
 ### templateStringExample.yaml
 ```yaml
----
 ---
 name: exampleFileGen.
 enumerations:
