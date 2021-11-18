@@ -15,3 +15,7 @@ std::string enumerator::generators::FileTemplateGenerator::ReadFile(const std::f
 
     return buffer.str();
 }
+
+#include "registrar.hpp"
+REGISTER(enumerator::Generator, enumerator::generators::FileTemplateGenerator, "Generates template from a provided file",
+         ARG(std::filesystem::path, "path", "the template path"));

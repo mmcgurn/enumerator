@@ -29,3 +29,9 @@ void enumerator::generators::TemplateGenerator::Generate(const std::string& case
     out << templateCopy;
     out.close();
 }
+
+#include "registrar.hpp"
+REGISTER(enumerator::Generator, enumerator::generators::TemplateGenerator, "Generates template from a specified string",
+        ARG(std::string, "template", "the template string"),
+         OPT(std::string, "extension", "optional file extension"),
+         ARG(std::string, "outputDirectory", "the path to the output directory"));
