@@ -6,6 +6,8 @@
 #include "enumerations/enumeration.hpp"
 #include "generator.hpp"
 #include "reporter.hpp"
+#include <string>
+#include <map>
 
 namespace enumerator {
 
@@ -16,8 +18,18 @@ class Enumerator {
     const std::shared_ptr<Generator> generator;
     const std::vector<std::shared_ptr<Reporter>> reporters;
 
-    // Recursive call to
+    /**
+     *     Recursive call to
+     */
     void Enumerate(const std::vector<std::shared_ptr<enumerations::Enumeration>>& remainingEnumerations, const std::map<std::string, std::string>& values, int& caseCount);
+
+    /**
+     * Call that passes options to generator/reporters
+     * @param nowRemainingEnumerations
+     * @param values
+     * @param caseCount
+     */
+    void ProcessOptionSet(const std::vector<std::shared_ptr<enumerations::Enumeration>>& nowRemainingEnumerations,  const std::map<std::string, std::string>& optionSet, int& caseCount);
 
     std::string BuildCaseName(const int& caseCount);
 
@@ -25,8 +37,6 @@ class Enumerator {
     Enumerator(std::string name, std::vector<std::shared_ptr<enumerations::Enumeration>> enumerations,std::shared_ptr<Generator> generator, std::vector<std::shared_ptr<Reporter>> reporters);
 
     void Enumerate();
-
-
 };
 }
 
