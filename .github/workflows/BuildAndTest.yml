@@ -43,7 +43,7 @@ jobs:
           fi
 
       - name: Run tests
-        run: docker run --rm cpp_parser_test_image
+        run: docker run --rm enumerator_test_image
 
   tag-version:
     # Ensure test job passes before pushing image.
