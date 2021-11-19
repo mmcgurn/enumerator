@@ -1,5 +1,5 @@
 # enumerator
-Is a library/executable that create a file from a template for every variation. This library/executable allows generating an enumerations of inputs.
+Is a library/executable that create a file from a template for every variation. This library/executable allows generating an enumerations of inputs. Enumeration interface allows extension to different types of values/lists.
 
 The minimum required options is a path to an input file:
 
@@ -69,3 +69,14 @@ echo "Hello World {{mu}} and {{density}}
 ## Building Enumerator
 The enumerator project can be built using CMake.  Examples and additional details are provided by [CMake](https://cmake.org/runningcmake/).  
 
+## Running Tests Locally
+The tests can be run locally using an IDE or cmake directly (ctest command).  To run the tests using the testing environment (docker), first make sure that [Docker](https://www.docker.com) installed.
+
+```bash
+# Build the docker testing image
+docker build -t testing_image -f DockerTestFile .
+
+# Run the built tests and view results
+docker run --rm testing_image 
+
+```
