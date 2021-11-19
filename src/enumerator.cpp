@@ -50,6 +50,6 @@ void enumerator::Enumerator::Enumerate(const std::vector<std::shared_ptr<enumera
     }
 }
 #include "registrar.hpp"
-REGISTERDEFAULT(enumerator::Enumerator, enumerator::Enumerator, "The default enumerator", ARG(std::string, "name", "base name for the resulting cases"),
-                ARG(std::vector<enumerator::enumerations::Enumeration>, "enumerations", "The list of enumerations"), ARG(enumerator::Generator, "generator", "where to generate the files"),
-                OPT(std::vector<enumerator::Reporter>, "reporters", "optional list of reporters/or where to write the history"));
+REGISTER_DEFAULT(enumerator::Enumerator, enumerator::Enumerator, "The default enumerator", ARG(std::string, "name", "base name for the resulting cases"),
+                 ARG(std::vector<enumerator::enumerations::Enumeration>, "enumerations", "The list of enumerations"), ARG(enumerator::Generator, "generator", "where to generate the files"),
+                 OPT(std::vector<enumerator::Reporter>, "reporters", "optional list of reporters/or where to write the history"));
