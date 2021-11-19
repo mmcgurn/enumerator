@@ -23,10 +23,10 @@ add_subdirectory(src)
 FetchContent_Declare(
         cppParser
         GIT_REPOSITORY https://github.com/UBCHREST/CppParser.git
-        GIT_TAG v0.1.1
+        GIT_TAG v0.1.2
 )
 FetchContent_MakeAvailable(cppParser)
-target_link_libraries(enumeratorLibrary PUBLIC cppParserLibrary cppParserTestLibrary)
+target_link_libraries(enumeratorLibrary PUBLIC cppParserLibrary)
 
 # Add required warnings for projects
 function(default_target_compile_options target)
