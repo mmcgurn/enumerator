@@ -9,4 +9,4 @@ void enumerator::reporters::StreamReporter::Report(const std::string& caseName, 
 }
 
 #include "registrar.hpp"
-REGISTERDEFAULT_WITHOUT_ARGUMENTS(enumerator::Reporter, enumerator::reporters::StreamReporter, "Reports all cases to the standard out");
+REGISTER_DEFAULT_WITHOUT_ARGUMENTS(enumerator::Reporter, enumerator::reporters::StreamReporter, "Reports all cases to the standard out");

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # Create the new project
-project(Enumerator VERSION 0.1.0)
+project(Enumerator VERSION 0.1.1)
 
 # Set the standards
 set(CMAKE_CXX_STANDARD 17)
@@ -23,7 +23,7 @@ add_subdirectory(src)
 FetchContent_Declare(
         cppParser
         GIT_REPOSITORY https://github.com/UBCHREST/CppParser.git
-        GIT_TAG main
+        GIT_TAG v0.1.1
 )
 FetchContent_MakeAvailable(cppParser)
 target_link_libraries(enumeratorLibrary PUBLIC cppParserLibrary cppParserTestLibrary)
