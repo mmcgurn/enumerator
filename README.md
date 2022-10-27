@@ -8,7 +8,7 @@ The minimum required options is a path to an input file:
 ```
 
 ## Template String Example
-In this example a string is provided in the template file directly.  Arguments in the template are replaced with specified enumerations if they are in the template as {{varName}}.
+In this example a string is provided in the template file directly.  Arguments in the template are replaced with specified enumerations if they are in the template as {{varName}}.  The built in argument {{id}} is automatically supplied and is replaced with the specific case id. 
 
 ### templateStringExample.yaml
 ```yaml
@@ -30,13 +30,12 @@ generator:
   !enumerator::generators::TemplateGenerator
   template: |
     #!/bin/bash
-    echo "Hello World {{mu}} and {{density}} with vel {{vel}}
+    echo "Hello World {{mu}} and {{density}} with vel {{vel}} from case {{id}}"
   extension: .sh
   outputDirectory: outputs
 reporters:
   - !enumerator::reporters::StreamReporter
 ```
-
 
 ## Template File Example
 In this example uses a template file for the basis.
@@ -63,11 +62,34 @@ reporters:
 ```shell
 #!/bin/bash
 
-echo "Hello World {{mu}} and {{density}}
+echo "Hello World {{mu}} and {{density}} from case {{id}}"
 ```
 
 ## Building Enumerator
 The enumerator project can be built using CMake.  Examples and additional details are provided by [CMake](https://cmake.org/runningcmake/).  
+
+### Installing Enumerator
+The enumerator project can also be installed with cmake. Details are available from [CMake](https://cmake.org/cmake/help/latest/guide/tutorial/Installing%20and%20Testing.html) and summarized here.
+
+```bash
+# create a build directory and configure cmake.  The build directory is assumed to be inside of the local repository directory.  If not the relative paths must be updated.
+# start in the enumerator repository root
+mkdir cmake-build-install
+cd cmake-build-install
+
+# configure for install
+cmake -B . -S ..  -DCMAKE_BUILD_TYPE=RELEASE              
+
+# build
+make -j
+
+# install the executable and libraries to your local file system
+cmake --install .  --prefix /path/to/install/directory
+
+# or to install in system defaults (may require root)
+cmake --install . 
+```
+
 
 ## Running Tests Locally
 The tests can be run locally using an IDE or cmake directly (ctest command).  To run the tests using the testing environment (docker), first make sure that [Docker](https://www.docker.com) installed.

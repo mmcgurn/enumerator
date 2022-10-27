@@ -12,6 +12,10 @@
 namespace enumerator {
 
 class Enumerator {
+   public:
+    //! allow access to the case name
+    inline static std::string caseNameKey = "id";
+
    private:
     const std::string name;
     const std::vector<std::shared_ptr<enumerations::Enumeration>> enumerations;
